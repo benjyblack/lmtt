@@ -1,0 +1,39 @@
+{
+    "manifest_version": 2,
+
+    "name": "LinkMeToThis",
+    "description": "A quick way to link people to YouTube videos.",
+    "version": "1.0",
+
+    "author": "Ben Black",
+    "short_name": "LMTT",
+
+    "icons": { 
+            "16": "img/icon-16.png",
+            "48": "img/icon-48.png",
+            "128": "img/icon-128.png" 
+    },
+
+    "permissions": [
+        "input",
+        "clipboardWrite",
+        "clipboardRead",
+        "http://www.youtube.com/",
+        "https://www.youtube.com/"
+    ],
+    "background" : {
+        "scripts": [ "background.js", "jquery.js"]
+    },
+    "commands": {
+        "link": {
+            "suggested_key": { "default": "Alt+Shift+Up" },
+            "description": "Open a link box"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": ["http://*/*", "https://*/*"],
+            "js": ["content_script.js"]
+        }
+    ]
+}
